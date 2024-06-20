@@ -1,6 +1,12 @@
 # wtm
 WebTextMiner extracts text from webs to create wordlists usefull for brute-force attacks
 
+### What is this program?
+
+- WebTextMiner creates wordlists from webpages to be used in brute-force attacks.  
+- This wordlist can be used to enumerate passwords, usernames, etc.
+- You probably want to feed this wordlists to another tool like Hydra, Hashcat, John the ripper, etc.
+
 ### Download
 
 ```bash
@@ -23,14 +29,23 @@ mv wtm.sh /data/data/com.termux/files/usr/bin/wtm
 
 ### Usage
 ```bash
-wtm -u url -f filename -d depth_level
+wtm -u url -f filename.txt -d depth_level
 ```
+
+> filename.txt can be reused. If you already have word/passwords/usernames, the new words will be added to it without duplicates.
 
 
 ### Example
 ```bash
 wtm -u https://example.com -f passwords.txt -d 2
+
+cat passwords.txt
+# cat debug_urls.txt
 ```
+
+> Carefull with the depth level. The bigger the depth level, the more words and urls will be extracted
+> You can scan millions of urls with depth level 3+ or 4+ depending on the amount of urls the webpage has
+
 
 ### Alternative Install
 
@@ -142,5 +157,11 @@ chmod +775 wtm.sh
 
 ./wtm.sh -h
 
-# Move it ti your bins folder as wtm to use it as a command from any folder
+# Move it to your bins folder as wtm to use it as a command from any folder
+
+# Termux:
+# mv wtm.sh /data/data/com.termux/files/usr/bin/wtm
+
+# Linux and Proot-Distro:
+# mv wtm.sh /bin/wtm
 ```
